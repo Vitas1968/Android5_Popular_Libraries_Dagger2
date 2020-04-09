@@ -29,8 +29,13 @@ class RepositoriesFragment : MvpAppCompatFragment(), RepositoriesView, BackButto
         fun newInstance() = RepositoriesFragment()
     }
 
+    @Inject
     @InjectPresenter
     lateinit var presenter: RepositoriesPresenter
+
+    @ProvidePresenter
+    fun providePresenter() =presenter
+
 
     @Inject lateinit var database: Database
     @Inject lateinit var imageLoader: IImageLoader<ImageView>
@@ -45,10 +50,15 @@ class RepositoriesFragment : MvpAppCompatFragment(), RepositoriesView, BackButto
         App.instance.appComponent.inject(this)
     }
 
+
+
+    /*
     @ProvidePresenter
     fun providePresenter() = RepositoriesPresenter(AndroidSchedulers.mainThread()).apply {
         App.instance.appComponent.inject(this)
     }
+
+     */
 
 
     override fun init() {
